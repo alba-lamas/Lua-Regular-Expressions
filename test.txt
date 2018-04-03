@@ -1,0 +1,14 @@
+Nom: Pepito
+Nom: Pepito Pepito Pepito
+Nom: pEpito
+Nom: pepito
+
+Email: pepito@dom.es
+Email: pepito.es
+Email: pepito@dom
+
+TLF: +34 123 45 67 89
+TLF: 123 45 67 89
+TLF: +34123456789
+TLF: 123456789
+TLF: 1234567890
