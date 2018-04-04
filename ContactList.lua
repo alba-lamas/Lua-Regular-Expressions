@@ -25,13 +25,15 @@ function lines_from(file)
 end
 
 -- tests the functions above
-local file = arg[1]
+local file = "test.txt"
 local lines = lines_from(file)
 
 -- print all line numbers and their contents
 for k,v in pairs(lines) do
     matched = false
-    if not string.match(v, 'Nom:[A-Z]+[a-z]*') == nil then
+    if string.match(v, '[A-Z]+[a-z]*') ~= nil then
         print("OK")
+    else
+        print("KO")
     end
 end
