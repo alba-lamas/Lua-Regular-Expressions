@@ -31,8 +31,8 @@ local lines = lines_from(file)
 -- print all line numbers and their contents
 for k,v in pairs(lines) do
     matched = false
-    if string.match(v, '[A-Z]+[a-z]*') ~= nil then
-        print("OK")
+    if string.match(v, 'Nom: %u%l*%s%u%l*%s%u%l*') ~= nil then
+        print(v.."--> OK")
     else
         print("KO")
     end
