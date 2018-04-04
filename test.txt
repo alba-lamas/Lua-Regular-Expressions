@@ -1,1 +1,2 @@
 Nom: Pepito Pep Pep
+email: nom@mail.com

@@ -32,8 +32,10 @@ local lines = lines_from(file)
 for k,v in pairs(lines) do
     matched = false
     if string.match(v, 'Nom: %u%l*%s%u%l*%s%u%l*') ~= nil then
-        print(v.."--> OK")
+        print("OK-->"..v)
+    elseif string.match(v, 'email: %l+@%l+%.%l+') ~= nil then
+        print("OK-->"..v)
     else
-        print("KO")
+        print("FATAL-->"..v)
     end
 end
