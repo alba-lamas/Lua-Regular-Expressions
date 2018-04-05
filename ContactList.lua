@@ -35,6 +35,8 @@ for k,v in pairs(lines) do
         print("OK-->"..v)
     elseif string.match(v, 'email: %l+@%l+%.%l+') ~= nil then
         print("OK-->"..v)
+    elseif string.match(v, 'Telf: %d9') ~= nil then
+        print("OK-->"..v)
     else
         print("FATAL-->"..v)
     end

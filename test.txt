@@ -1,2 +1,6 @@
 Nom: Pepito Pep Pep
+Nom: PepeP PEp Pep
 email: nom@mail.com
+email: mon@mail
+Telf: 999999999
+Telf: 9875
