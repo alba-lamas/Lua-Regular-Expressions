@@ -17,7 +17,7 @@ function lines_from(file)
 end
 
 -- tests the functions above
-local file = "test.txt"
+local file = "testcontact.txt"
 local lines = lines_from(file)
 
 -- print all line numbers and their contents
