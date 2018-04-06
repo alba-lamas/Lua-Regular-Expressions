@@ -1,5 +1,5 @@
 function doThing(ifile)
-    local rifile = io.open(file, "r")
+    local rifile = io.open(ifile, "r")
 
     for line in rifile:lines() do
         if string.match(line, 'Nom: %u%l*%s%u%l*%s%u%l*') ~= nil then
@@ -14,5 +14,6 @@ function doThing(ifile)
     end
 end
 
-file = "test.txt"
-doThing()
+
+local ifile = "./tests/testcontact.txt"
+doThing(ifile)
