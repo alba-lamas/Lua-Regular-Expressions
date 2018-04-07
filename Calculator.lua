@@ -1,28 +1,47 @@
+function operate(operation)
+    local result = 0
 
-function file_exists(file)
-    local f = io.open(file, "rb")
-    if f then f:close() end
-    return f ~= nil
-end
-
--- get all lines from a file, returns an empty
--- list/table if the file does not exist
-function lines_from(file)
-    if not file_exists(file) then return {} end
-    lines = {}
-    for line in io.lines(file) do
-        lines[#lines + 1] = line
+    if operation[2] == "+" then
+        result = tonumber(operation[1])+tonumber(operation[3])
+    elseif operation[2] == "-" then
+        result = tonumber(operation[1])-tonumber(operation[3])
+    elseif operation[2] == "*" then
+        result = tonumber(operation[1])*tonumber(operation[3])
+    elseif operation[2] == "/" then
+        result = tonumber(operation[1])/tonumber(operation[3])
     end
-    return lines
+
+    print("La "..operation[2].." de "..operation[1].." i "..operation[3].." es: "..result)
 end
 
--- tests the functions above
-local file = "testcalc.txt"
-local lines = lines_from(file)
+function isCalc(line)
+    return string.match(line,'Calc: %d+ ?[%+%-%*%/] ?%d+;+') ~= nil
+end
 
--- print all line numbers and their contents
-for k,v in pairs(lines) do
-    if string.match(v, 'Calc: %d+%.?%d* %+ %d+%.?%d*') ~= nil then
-        print("OK-->"..v)
+function isAssign(line)
+    return string.match(line,'%l ?= ?%d+;') ~= nil
+end
+
+function doThing(ifile)
+    local rifile = io.open(ifile, "r")
+    for line in rifile:lines() do
+        if isCalc(line) then
+            for matching in line:gmatch('%d+ ?[%+%-%*%/] ?%d+;+') do
+                local operation = {}
+                for values in matching:gmatch('[%d+%+%-%*%/]') do
+                    table.insert(operation, values)
+                end
+                operate(operation)
+            end
+
+
+        elseif isAssign(line) then
+            variablesAssign[line:match('%l')] = line:match('%d+')
+        end
+
     end
 end
+
+variablesAssign = {}
+local ifile = "./tests/testcalc.txt"
+doThing(ifile)
